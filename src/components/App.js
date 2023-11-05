@@ -9,14 +9,12 @@ import Prompt from "./Prompt";
 const App = () => {
   return (
     <>
-      <GlobalStyle />
       <ThemeProvider theme={theme}>
+        <GlobalStyle />
         <Sequence flattenChildren>
           <Line delay={500}>Hello World</Line>
           <Line delay={500}>Hello World</Line>
-          <Line delay={500} typed>
-            Hello World
-          </Line>
+          <Line delay={500}>Hello World</Line>
           <Prompt />
         </Sequence>
       </ThemeProvider>

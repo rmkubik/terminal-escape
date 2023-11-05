@@ -9,7 +9,7 @@ import formatLineText from "../utils/formatText/formatLineText";
  */
 const getColor = (props) => {
   const { colors } = props.theme;
-  const themeColor = colors[props.color];
+  const themeColor = colors[props.$color];
 
   if (!themeColor) {
     return "";
@@ -20,9 +20,9 @@ const getColor = (props) => {
 
 const LineContainer = styled.div`
   white-space: pre-wrap;
-  display: ${(props) => (props.inline ? "inline-block" : "block")};
+  display: ${(props) => (props.$inline ? "inline-block" : "block")};
   min-height: 1em;
-  font-weight: ${(props) => (props.bold ? "bold" : "normal")};
+  font-weight: ${(props) => (props.$bold ? "bold" : "normal")};
   color: ${getColor};
 `;
 
@@ -159,9 +159,9 @@ const Line = ({
   return (
     <LineContainer
       className="line"
-      inline={inline}
-      bold={bold}
-      color={color}
+      $inline={inline}
+      $bold={bold}
+      $color={color}
       ref={containerRef}
     >
       {asciiArt ? (

@@ -8,6 +8,8 @@ const theme = {
     success: "#40bf00",
     error: "#e61717",
     info: "blue",
+    bg: "#0e0e12",
+    text: "#e6e6ec",
   },
 };
 

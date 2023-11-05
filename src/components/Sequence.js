@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Line from "./Line";
 import arrayifyChildren from "../utils/react/arraifyChildren";
 import styled from "styled-components";
-import useGlobalClickOnce from "../utils/useGlobalClickOnce";
+import useGlobalClickOnce from "../utils/inputEvents/useGlobalClickOnce";
 import Prompt from "./Prompt";
 
 function preProcessChildren({ children, flattenChildren }) {

@@ -7,26 +7,12 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: Menlo,Courier,monospace;
-    color: white;
-    background-color: black;
+    color: ${(props) => props.theme.colors.text};
+    background-color: ${(props) => props.theme.colors.bg};
   }
 
   button {
     cursor: pointer;
-  }
-
-  input {
-    background: none;
-    border: none;
-    color: white;
-
-    width: 100%;
-    font-size: 1rem;
-    font-family: Menlo,Courier,monospace;
-
-    &:focus {
-      outline: none;
-    }
   }
 `;
 
