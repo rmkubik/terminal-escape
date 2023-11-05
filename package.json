@@ -6,9 +6,13 @@
   "dependencies": {
     "parcel": "^2.0.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "styled-components": "^6.1.0",
+    "typed.js": "^2.0.16"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "process": "^0.11.10"
+  },
   "scripts": {
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html"
