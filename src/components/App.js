@@ -9,12 +9,27 @@ import bindCommands from "../commands";
 
 const App = () => {
   const [stdOut, setStdOut] = useState([]);
-  const commands = bindCommands({
-    stdout: (Component) =>
-      setStdOut((prevStdout) => [...prevStdout, <Component />]),
-  });
+
   const parseInput = (input) => {
     const [command, ...args] = input.split(" ");
+
+    const commands = bindCommands({
+      stdout: (Component) =>
+        setStdOut((prevStdout) => [
+          ...prevStdout,
+          <Component />,
+          <Prompt onSubmit={parseInput} />,
+        ]),
+    });
+
+    if (!commands[command]) {
+      setStdOut((prevStdout) => [
+        ...prevStdout,
+        <Line>Unrecognized command "{command}"</Line>,
+        <Prompt onSubmit={parseInput} />,
+      ]);
+      return;
+    }
 
     commands[command]?.(...args);
   };
