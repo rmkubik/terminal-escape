@@ -1,13 +1,16 @@
-import help from "./help";
-import print from "./print";
-import unlock from "./unlock";
+import * as commands from "./*.js";
+
+const commandEntries = Object.entries(commands).filter(
+  ([key]) => key !== "index"
+);
 
 const bindCommands = (commandLineInterface) => {
-  return {
-    help: help(commandLineInterface),
-    unlock: unlock(commandLineInterface),
-    print: print(commandLineInterface),
-  };
+  return commandEntries.reduce((boundCommands, [key, currentCommand]) => {
+    return {
+      ...boundCommands,
+      [key]: currentCommand.default(commandLineInterface),
+    };
+  }, {});
 };
 
 export default bindCommands;
