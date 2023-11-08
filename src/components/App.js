@@ -6,6 +6,7 @@ import theme from "../styles/theme";
 import GlobalStyle from "../styles/GlobalStyle";
 import Prompt from "./Prompt";
 import bindCommands from "../commands";
+import FilesModel from "../data/files";
 
 const App = () => {
   const [stdOut, setStdOut] = useState([]);
@@ -14,18 +15,23 @@ const App = () => {
     const [command, ...args] = input.split(" ");
 
     const commands = bindCommands({
-      stdout: (Component) =>
+      stdout: (Component) => {
+        setStdOut((prevStdout) => [...prevStdout, <Component />]);
+      },
+      prompt: () => {
         setStdOut((prevStdout) => [
           ...prevStdout,
-          <Component />,
           <Prompt onSubmit={parseInput} />,
-        ]),
+        ]);
+      },
+      files: FilesModel,
     });
 
     if (!commands[command]) {
       setStdOut((prevStdout) => [
         ...prevStdout,
         <Line>Unrecognized command "{command}"</Line>,
+        <Line>Try "help" for more info.</Line>,
         <Prompt onSubmit={parseInput} />,
       ]);
       return;
@@ -37,9 +43,8 @@ const App = () => {
   useEffect(() => {
     setStdOut([
       <Sequence>
-        <Line delay={500}>Hello World</Line>
-        <Line delay={500}>Hello World</Line>
-        <Line delay={500}>Hello World</Line>
+        <Line>Welcome to Shield OS</Line>
+        <Line>Please authenticate to continue.</Line>
       </Sequence>,
       <Prompt onSubmit={parseInput} />,
     ]);

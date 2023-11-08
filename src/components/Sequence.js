@@ -49,11 +49,9 @@ const Sequence = ({
     flattenChildren,
   });
 
-  console.log({ children, preProcessedChildren });
-
-  useGlobalClickOnce(() => {
-    setCurrentChild(preProcessedChildren.length);
-  });
+  // useGlobalClickOnce(() => {
+  //   setCurrentChild(preProcessedChildren.length);
+  // });
 
   useEffect(() => {
     if (currentChild >= preProcessedChildren.length - 1) {

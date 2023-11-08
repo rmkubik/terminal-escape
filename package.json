@@ -5,6 +5,7 @@
   "description": "",
   "dependencies": {
     "autosize": "^6.0.1",
+    "gray-matter": "^4.0.3",
     "parcel": "^2.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -12,6 +13,9 @@
     "typed.js": "^2.0.16"
   },
   "devDependencies": {
+    "@parcel/resolver-glob": "^2.10.2",
+    "@parcel/transformer-inline-string": "^2.10.2",
+    "buffer": "^6.0.3",
     "process": "^0.11.10"
   },
   "scripts": {
