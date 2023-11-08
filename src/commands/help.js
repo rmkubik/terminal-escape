@@ -20,6 +20,35 @@ const UnrecognizedCommandHelpSequence = (command) => () => {
   );
 };
 
+const ListHelpSeq = () => {
+  return (
+    <Sequence>
+      <Line>The "list" command will show the contents of this directory.</Line>
+    </Sequence>
+  );
+};
+
+const PrintHelpSeq = () => {
+  return (
+    <Sequence>
+      <Line>The "print" command will display the provided content.</Line>
+    </Sequence>
+  );
+};
+
+const UnlockHelpSeq = () => {
+  return (
+    <Sequence>
+      <Line>
+        The "unlock" command will disable the Shield OS monitoring program
+      </Line>
+      <Line>and allow unfettered access to the root machine.</Line>
+      <Line></Line>
+      <Line>Provided the correct pass code is provided.</Line>
+    </Sequence>
+  );
+};
+
 const help = (commandLineInterface) => (command) => {
   if (!command) {
     commandLineInterface.stdout(MainHelpSequence);
@@ -27,7 +56,21 @@ const help = (commandLineInterface) => (command) => {
     return;
   }
 
-  commandLineInterface.stdout(UnrecognizedCommandHelpSequence(command));
+  switch (command) {
+    case "list":
+      commandLineInterface.stdout(ListHelpSeq);
+      break;
+    case "print":
+      commandLineInterface.stdout(PrintHelpSeq);
+      break;
+    case "unlock":
+      commandLineInterface.stdout(UnlockHelpSeq);
+      break;
+    default:
+      commandLineInterface.stdout(UnrecognizedCommandHelpSequence(command));
+      break;
+  }
+
   commandLineInterface.prompt();
 };
 
