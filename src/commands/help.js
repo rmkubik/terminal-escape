@@ -15,7 +15,7 @@ const UnrecognizedCommandHelpSequence = (command) => () => {
   return (
     <Sequence>
       <Line>There is no help text for the command: "{command}"</Line>
-      <Line>Try a valid command like "test"</Line>
+      <Line>Try a valid command like "list"</Line>
     </Sequence>
   );
 };

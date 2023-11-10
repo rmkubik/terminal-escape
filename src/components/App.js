@@ -7,6 +7,7 @@ import GlobalStyle from "../styles/GlobalStyle";
 import Prompt from "./Prompt";
 import bindCommands from "../commands";
 import FilesModel from "../data/files";
+import shieldTxt from "../data/asciiArt/shield.txt";
 
 const App = () => {
   const [stdOut, setStdOut] = useState([]);
@@ -43,6 +44,10 @@ const App = () => {
   useEffect(() => {
     setStdOut([
       <Sequence>
+        <Line />
+        <Line asciiArt alt="Shield">
+          {shieldTxt}
+        </Line>
         <Line>Welcome to Shield OS</Line>
         <Line>Please authenticate to continue.</Line>
       </Sequence>,
