@@ -2,4 +2,21 @@
 extname: ""
 hidden: true
 ---
-test
+{
+  "minLength": 8,
+  "specialChar": {
+    "required": true,
+    "valid": ["!", "@", "#", "$", "%"]
+  },
+  "recoveryQuestions": [
+    {
+      "question": "What state were you born in?"
+    },
+    {
+      "question": "What is your mother's maiden name?"
+    },
+    {
+      "question": "What was your first car?"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+---
+extname: "json"
+---
+{
+  "validExt": [
+    "txt",
+    "text"
+  ]
+}

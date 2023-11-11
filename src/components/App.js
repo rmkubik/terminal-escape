@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { ThemeProvider } from "styled-components";
+import React, { useEffect, useRef, useState } from "react";
+import styled, { ThemeProvider } from "styled-components";
 import Sequence from "./Sequence";
 import Line from "./Line";
 import theme from "../styles/theme";
@@ -8,9 +8,16 @@ import Prompt from "./Prompt";
 import bindCommands from "../commands";
 import FilesModel from "../data/files";
 import shieldTxt from "../data/asciiArt/shield.txt";
+import env from "../data/env.yaml";
+
+const Console = styled.div`
+  overflow-y: scroll;
+  height: 800px;
+`;
 
 const App = () => {
   const [stdOut, setStdOut] = useState([]);
+  const consoleRef = useRef();
 
   const parseInput = (input) => {
     const [command, ...args] = input.split(" ");
@@ -22,7 +29,12 @@ const App = () => {
       prompt: () => {
         setStdOut((prevStdout) => [
           ...prevStdout,
-          <Prompt onSubmit={parseInput} />,
+          <Prompt
+            onSubmit={parseInput}
+            onMount={() => {
+              consoleRef.current.scrollTop = consoleRef.current.scrollHeight;
+            }}
+          />,
         ]);
       },
       files: FilesModel,
@@ -33,7 +45,12 @@ const App = () => {
         ...prevStdout,
         <Line>Unrecognized command "{command}"</Line>,
         <Line>Try "help" for more info.</Line>,
-        <Prompt onSubmit={parseInput} />,
+        <Prompt
+          onSubmit={parseInput}
+          onMount={() => {
+            consoleRef.current.scrollTop = consoleRef.current.scrollHeight;
+          }}
+        />,
       ]);
       return;
     }
@@ -45,7 +62,7 @@ const App = () => {
     setStdOut([
       <Sequence>
         <Line />
-        <Line asciiArt alt="Shield">
+        <Line asciiArt bold color="asciiArtColor" alt="Shield">
           {shieldTxt}
         </Line>
         <Line>Welcome to Shield OS</Line>
@@ -59,7 +76,7 @@ const App = () => {
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        {stdOut}
+        <Console ref={consoleRef}>{stdOut}</Console>
       </ThemeProvider>
     </>
   );

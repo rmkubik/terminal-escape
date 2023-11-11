@@ -24,7 +24,7 @@ const Text = styled.textarea`
   }
 `;
 
-const Prompt = ({ onSubmit }) => {
+const Prompt = ({ onSubmit, onMount }) => {
   const [value, setValue] = useState("$ ");
   const [disabled, setDisabled] = useState(false);
   const { textAreaRef } = useTextAreaCursorMoved({
@@ -51,9 +51,15 @@ const Prompt = ({ onSubmit }) => {
   );
 
   useEffect(() => {
+    onMount?.();
+  }, [value]);
+
+  useEffect(() => {
     if (!textAreaRef.current) {
       return;
     }
+
+    setTimeout(() => onMount?.(), 50);
 
     setCursorToPos(textAreaRef.current, -1);
     autosize(textAreaRef.current);

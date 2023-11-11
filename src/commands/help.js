@@ -31,7 +31,16 @@ const ListHelpSeq = () => {
 const PrintHelpSeq = () => {
   return (
     <Sequence>
-      <Line>The "print" command will display the provided content.</Line>
+      <Line>The "print" command will display the provided arguments.</Line>
+      <Line />
+      <Line>
+        Print provides a system-wide configuration file named
+        "print_config.json"
+      </Line>
+      <Line />
+      <Line>options:</Line>
+      <Line>- validExt: [string]</Line>
+      <Line />
     </Sequence>
   );
 };
@@ -45,6 +54,16 @@ const UnlockHelpSeq = () => {
       <Line>and allow unfettered access to the root machine.</Line>
       <Line></Line>
       <Line>Provided the correct pass code is provided.</Line>
+    </Sequence>
+  );
+};
+
+const ParseHelpSeq = () => {
+  return (
+    <Sequence>
+      <Line>
+        The "parse" command displays contents for non text file formats.
+      </Line>
     </Sequence>
   );
 };
@@ -65,6 +84,9 @@ const help = (commandLineInterface) => (command) => {
       break;
     case "unlock":
       commandLineInterface.stdout(UnlockHelpSeq);
+      break;
+    case "parse":
+      commandLineInterface.stdout(ParseHelpSeq);
       break;
     default:
       commandLineInterface.stdout(UnrecognizedCommandHelpSequence(command));
