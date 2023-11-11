@@ -18,6 +18,15 @@ const CantParseTextSeq = () => {
   );
 };
 
+const NoParseDepInstalledSeq = (extname) => () => {
+  return (
+    <Sequence>
+      <Line>ERROR: Failed to parse .{extname} file</Line>
+      <Line>Dependency @parse/{extname} does not exist</Line>
+    </Sequence>
+  );
+};
+
 const ParseFileSeq = (content) => () => {
   return (
     <Sequence>
@@ -37,6 +46,14 @@ const parse = (commandLineInterface) => (fileName) => {
 
   if (file.extname === "txt") {
     commandLineInterface.stdout(CantParseTextSeq);
+    commandLineInterface.prompt();
+    return;
+  }
+
+  if (
+    !commandLineInterface.dependencies.isInstalled(`@parse/${file.extname}`)
+  ) {
+    commandLineInterface.stdout(NoParseDepInstalledSeq(file.extname));
     commandLineInterface.prompt();
     return;
   }

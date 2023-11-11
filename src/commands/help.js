@@ -39,7 +39,7 @@ const PrintHelpSeq = () => {
       </Line>
       <Line />
       <Line>options:</Line>
-      <Line>- validExt: [string]</Line>
+      <Line>- validExt: string[]</Line>
       <Line />
     </Sequence>
   );
@@ -61,9 +61,8 @@ const UnlockHelpSeq = () => {
 const ParseHelpSeq = () => {
   return (
     <Sequence>
-      <Line>
-        The "parse" command displays contents for non text file formats.
-      </Line>
+      <Line>"parse" provides an ecosystem of modules capable of parsing</Line>
+      <Line>many non-text file formats. </Line>
     </Sequence>
   );
 };

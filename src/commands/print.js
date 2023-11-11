@@ -3,8 +3,6 @@ import Line from "../components/Line";
 import Sequence from "../components/Sequence";
 import env from "../data/env.yaml";
 
-console.log({ env });
-
 const PrintFileSeq = (content) => () => {
   return (
     <Sequence>

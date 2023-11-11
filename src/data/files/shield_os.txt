@@ -1,5 +1,5 @@
 ---
-extname: ""
+extname: "json"
 hidden: true
 ---
 {

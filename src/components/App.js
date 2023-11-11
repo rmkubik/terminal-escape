@@ -9,6 +9,7 @@ import bindCommands from "../commands";
 import FilesModel from "../data/files";
 import shieldTxt from "../data/asciiArt/shield.txt";
 import env from "../data/env.yaml";
+import DependencyModel from "../data/dependencies";
 
 const Console = styled.div`
   overflow-y: scroll;
@@ -17,6 +18,8 @@ const Console = styled.div`
 
 const App = () => {
   const [stdOut, setStdOut] = useState([]);
+  const validDeps = ["@parse/json", "@parse/xml"];
+  const [dependencies, setDependencies] = useState([]);
   const consoleRef = useRef();
 
   const parseInput = (input) => {
@@ -37,6 +40,7 @@ const App = () => {
           />,
         ]);
       },
+      dependencies: DependencyModel,
       files: FilesModel,
     });
 

@@ -5,6 +5,7 @@ const commandEntries = Object.entries(commands).filter(
 );
 
 const bindCommands = (commandLineInterface) => {
+  console.log("binding commands");
   return commandEntries.reduce((boundCommands, [key, currentCommand]) => {
     return {
       ...boundCommands,
