@@ -10,9 +10,9 @@ const WorldSeq = () => {
   );
 };
 
-const install = (commandLineInterface) => () => {
+const hello = (commandLineInterface) => () => {
   commandLineInterface.stdout(WorldSeq);
   commandLineInterface.prompt();
 };
 
-export default install;
+export default hello;
