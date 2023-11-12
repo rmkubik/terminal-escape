@@ -6,7 +6,7 @@ const RecoveryAnswerOneSeq = () => {
   return (
     <Sequence>
       <Line>Correct!</Line>
-      <Line>A type of serious weather pattern.</Line>
+      <Line>PW HINT: A type of severe weather pattern.</Line>
     </Sequence>
   );
 };
@@ -15,7 +15,8 @@ const RecoveryAnswerTwoSeq = () => {
   return (
     <Sequence>
       <Line>Correct!</Line>
-      <Line>All vowels should be replaced with special characters.</Line>
+      <Line>PW HINT: All vowels should be replaced</Line>
+      <Line>with special characters.</Line>
     </Sequence>
   );
 };
@@ -24,7 +25,7 @@ const RecoveryAnswerThreeSeq = () => {
   return (
     <Sequence>
       <Line>Correct!</Line>
-      <Line>A gaming company.</Line>
+      <Line>PW HINT: A gaming company.</Line>
     </Sequence>
   );
 };

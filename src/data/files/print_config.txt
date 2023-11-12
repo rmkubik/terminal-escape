@@ -6,8 +6,5 @@ extname: "json"
     "txt",
   ],
   "printEnvVars": true,
-  "parse": {
-    "engine": "parse",
-    "enabled": false
-  }
+  "parseEngineEnabled": false
 }
