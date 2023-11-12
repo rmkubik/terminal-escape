@@ -15,8 +15,13 @@ const PrintInvalidExtnameSeq = (file) => () => {
   return (
     <Sequence>
       <Line>
-        Print cannot parse "{file.name}.{file.extname}" Invalid extension type.
+        ERR: Print cannot parse "{file.name}.{file.extname}"
       </Line>
+      <Line>ERR:</Line>
+      <Line>ERR: Invalid extension type.</Line>
+      <Line />
+      <Line>Check "parse" engine configuration</Line>
+      <Line>setting in "print_config.json"</Line>
     </Sequence>
   );
 };

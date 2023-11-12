@@ -1,0 +1,17 @@
+---
+extname: "md"
+---
+Take care of this junk before movie night!!!!!!
+
+to-do
+- [x] install shield os
+- [x] change admin password
+- [ ] head to the store
+    - [x] bananas
+    - [x] eggs
+    - [ ] kimchi
+    - [ ] tapenade
+- [ ] research new car
+    - new toyota?
+    - prius?
+    - something totally new??? Brad's FORD is hella cool

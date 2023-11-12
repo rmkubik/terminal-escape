@@ -4,6 +4,10 @@ extname: "json"
 {
   "validExt": [
     "txt",
-    "text"
-  ]
+  ],
+  "printEnvVars": true,
+  "parse": {
+    "engine": "parse",
+    "enabled": false
+  }
 }

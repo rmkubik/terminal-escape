@@ -2,6 +2,27 @@ import React from "react";
 import Line from "../components/Line";
 import Sequence from "../components/Sequence";
 
+const InstalledDependenciesSeq = (deps) => () => {
+  const parseDeps = deps.filter((dep) => dep.startsWith("@parse"));
+
+  if (parseDeps.length === 0) {
+    return (
+      <Sequence>
+        <Line>No "parse" dependencies installed.</Line>
+      </Sequence>
+    );
+  }
+
+  return (
+    <Sequence flattenChildren>
+      <Line>Installed "parse" dependencies:</Line>
+      {parseDeps.map((dep) => (
+        <Line key={dep}>{`* ${dep}`}</Line>
+      ))}
+    </Sequence>
+  );
+};
+
 const NotFileSeq = (fileName) => () => {
   return (
     <Sequence>
@@ -36,6 +57,14 @@ const ParseFileSeq = (content) => () => {
 };
 
 const parse = (commandLineInterface) => (fileName) => {
+  if (!fileName) {
+    commandLineInterface.stdout(
+      InstalledDependenciesSeq(commandLineInterface.dependencies.installed)
+    );
+    commandLineInterface.prompt();
+    return;
+  }
+
   const file = commandLineInterface.files.get(fileName);
 
   if (!file) {

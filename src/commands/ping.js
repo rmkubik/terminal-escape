@@ -10,10 +10,10 @@ const PingServerSeq = (url) => () => {
       <Line />
       <Line typed>[^200.^500.^100.^300.^100.^300.^200.^400]</Line>
       <Line />
-      <Line>Connection established</Line>
+      <Line>Connection successfully established!</Line>
       <Line />
       <Line>Ping Origin Location</Line>
-      <Line delay={500}>Server: Portland, OR - CenturyLink</Line>
+      <Line delay={500}>Server: Portland, OR, U.S.A. - CenturyLink</Line>
       <Line>IP: 18.884.123.85 {"<CenturyLink>"}</Line>
     </Sequence>
   );
@@ -52,12 +52,18 @@ const ping = (commandLineInterface) => (url) => {
   // some small semblance of verisimilitude.
   if (!new URL(url).host.includes(".")) {
     commandLineInterface.stdout(CannotReachUrlSeq(url));
-    commandLineInterface.prompt();
+    // Timeout roughly matches
+    // the length of dots in the
+    // failed ping sequence.
+    setTimeout(() => commandLineInterface.prompt(), 1800);
     return;
   }
 
   commandLineInterface.stdout(PingServerSeq(url));
-  commandLineInterface.prompt();
+  // Timeout roughly matches
+  // the length of dots and delays
+  // in the ping sequence.
+  setTimeout(() => commandLineInterface.prompt(), 3000);
 };
 
 export default ping;

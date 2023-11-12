@@ -18,8 +18,6 @@ const Console = styled.div`
 
 const App = () => {
   const [stdOut, setStdOut] = useState([]);
-  const validDeps = ["@parse/json", "@parse/xml"];
-  const [dependencies, setDependencies] = useState([]);
   const consoleRef = useRef();
 
   const parseInput = (input) => {
@@ -69,7 +67,11 @@ const App = () => {
         <Line asciiArt bold color="asciiArtColor" alt="Shield">
           {shieldTxt}
         </Line>
-        <Line>Welcome to Shield OS</Line>
+        <Line color="asciiArtColor">SHIELD_OS v3.37.2</Line>
+        <Line />
+        <Line>
+          Welcome to <strong>Shield OS</strong>
+        </Line>
         <Line>Please authenticate to continue.</Line>
       </Sequence>,
       <Prompt onSubmit={parseInput} />,

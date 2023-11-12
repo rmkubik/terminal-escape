@@ -20,6 +20,19 @@ const InvalidPassCodeSeq = () => {
   );
 };
 
+const SuccessSeq = () => {
+  return (
+    <Sequence>
+      <Line />
+      <Line bold color="success">
+        UNLOCKED.
+      </Line>
+      <Line color="success">Welcome to SHIELD_OS, "MORPHEUS"</Line>
+      <Line />
+    </Sequence>
+  );
+};
+
 const unlock = (commandLineInterface) => (passCode) => {
   if (!passCode) {
     commandLineInterface.stdout(NoPassCodeSeq);
@@ -27,7 +40,13 @@ const unlock = (commandLineInterface) => (passCode) => {
     return;
   }
 
-  commandLineInterface.stdout(InvalidPassCodeSeq);
+  if (passCode !== "bl!zz@rd") {
+    commandLineInterface.stdout(InvalidPassCodeSeq);
+    commandLineInterface.prompt();
+    return;
+  }
+
+  commandLineInterface.stdout(SuccessSeq);
   commandLineInterface.prompt();
 };
 

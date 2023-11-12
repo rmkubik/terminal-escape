@@ -8,15 +8,22 @@ hidden: true
     "required": true,
     "valid": ["!", "@", "#", "$", "%"]
   },
+  "forceLowerCase": true,
   "recoveryQuestions": [
     {
-      "question": "What state were you born in?"
+      "id": 1,
+      "question": "What state were you born in?",
+      "answer": "XXXXXX",
     },
     {
-      "question": "What is your mother's maiden name?"
+      "id": 2,
+      "question": "What is your favorite movie?",
+      "answer": "XXX XXXXXX",
     },
     {
-      "question": "What was your first car?"
+      "id": 3,
+      "question": "What is the brand of your car?",
+      "answer": "XXXXXX",
     }
   ]
 }

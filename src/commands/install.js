@@ -36,14 +36,19 @@ const install = (commandLineInterface) => (dependency) => {
   const isValidDep = commandLineInterface.dependencies.isValid(dependency);
 
   if (!isValidDep) {
-    commandLineInterface.stdout(DepDoesNotExistSeq(dependency));
-    commandLineInterface.prompt();
+    setTimeout(() => {
+      commandLineInterface.stdout(DepDoesNotExistSeq(dependency));
+      commandLineInterface.prompt();
+    }, 800);
     return;
   }
 
   commandLineInterface.dependencies.install(dependency);
   commandLineInterface.stdout(InstallDepSeq(dependency));
-  commandLineInterface.prompt();
+
+  // This timeout roughly matches the length of the
+  // dots in the install sequence.
+  setTimeout(() => commandLineInterface.prompt(), 4000);
 };
 
 export default install;

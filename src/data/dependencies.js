@@ -1,5 +1,11 @@
 const DependencyModel = {
-  validDeps: ["@parse/json", "@parse/xml"],
+  validDeps: [
+    "@parse/json",
+    "@parse/md",
+    "@parse/xml",
+    "@parse/csv",
+    "@parse/yaml",
+  ],
   installed: [],
   isValid: (dep) => {
     return DependencyModel.validDeps.includes(dep);
