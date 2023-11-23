@@ -21,7 +21,9 @@
   },
   "scripts": {
     "start": "parcel src/index.html",
-    "build": "parcel build src/index.html"
+    "build": "parcel build src/index.html --public-url='.'",
+    "deploy": "npm run build && npm run deploy:itch",
+    "deploy:itch": "butler push dist rmkubik/terminal-escape:html"
   },
   "author": "",
   "license": "ISC"
