@@ -69,6 +69,19 @@ const App = () => {
         </Line>
         <Line color="asciiArtColor">SHIELD_OS v3.37.2</Line>
         <Line />
+        <Line color="asciiArtColor">{"---- [CUSTOM User Greeting] ----"}</Line>
+        <Line>This SERVER is super 1337 and SECURE.</Line>
+        <Line />
+        <Line>I DARE you to try and break in!</Line>
+        <Line />
+        <Line>If you don't know how terminals work</Line>
+        <Line>you'll NEVER make it. But if you</Line>
+        <Line>wanna try anyway, I made a special</Line>
+        <Line>command just for you.</Line>
+        <Line />
+        <Line>Try typing in: "help newb"</Line>
+        <Line color="asciiArtColor">{"--------------------------------"}</Line>
+        <Line />
         <Line>
           Welcome to <strong>Shield OS</strong>
         </Line>
