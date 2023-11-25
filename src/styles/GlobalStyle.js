@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: Menlo,Courier,monospace;
     color: ${(props) => props.theme.colors.stdOutText};
     background-color: ${(props) => props.theme.colors.bg};
+    margin: 0;
   }
 
   button {

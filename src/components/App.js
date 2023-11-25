@@ -14,6 +14,8 @@ import DependencyModel from "../data/dependencies";
 const Console = styled.div`
   overflow-y: scroll;
   height: 800px;
+
+  padding: 1rem;
 `;
 
 const App = () => {
@@ -74,7 +76,12 @@ const App = () => {
         <Line />
         <Line>I DARE you to try and break in!</Line>
         <Line />
-        <Line>If you don't know how terminals work</Line>
+        <Line>SHIELD_OS isn't one of those BOOMER terminals</Line>
+        <Line>There's no dumb penguin mascot, it has a</Line>
+        <Line>a super sick SHIELD logo. And nothing you</Line>
+        <Line>know from over there will help you here.</Line>
+        <Line />
+        <Line>If you don't know how SHIELD_OS works</Line>
         <Line>you'll NEVER make it. But if you</Line>
         <Line>wanna try anyway, I made a special</Line>
         <Line>command just for you.</Line>

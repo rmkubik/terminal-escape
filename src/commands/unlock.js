@@ -25,7 +25,7 @@ const SuccessSeq = () => {
     <Sequence>
       <Line />
       <Line bold color="success">
-        UNLOCKED.
+        ACCESS GRANTED.
       </Line>
       <Line color="success">Welcome to SHIELD_OS, "MORPHEUS"</Line>
       <Line />
@@ -47,7 +47,6 @@ const unlock = (commandLineInterface) => (passCode) => {
   }
 
   commandLineInterface.stdout(SuccessSeq);
-  commandLineInterface.prompt();
 };
 
 export default unlock;
