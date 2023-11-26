@@ -13,7 +13,7 @@ import DependencyModel from "../data/dependencies";
 
 const Console = styled.div`
   overflow-y: scroll;
-  height: 800px;
+  height: 650px;
 
   padding: 1rem;
 `;
