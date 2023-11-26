@@ -1,12 +1,44 @@
 import React from "react";
 import Line from "../components/Line";
 import Sequence from "../components/Sequence";
+import { commandCount } from "./index";
+import env from "../data/env.yaml";
+
+const helpedCommands = new Set(["help"]);
+export const printedVariables = new Set();
+
+export const Unlocked = () => {
+  const unlocked = [];
+
+  if (helpedCommands.size > 0) {
+    unlocked.push(
+      <Line>
+        found commands ({helpedCommands.size}/{commandCount}):{" "}
+        {Array.from(helpedCommands).join(", ")}
+      </Line>
+    );
+  }
+
+  if (printedVariables.size > 0) {
+    const varCount = Object.values(env).length;
+    unlocked.push(
+      <Line>
+        printed ({printedVariables.size}/{varCount}):{" "}
+        {Array.from(printedVariables).join(", ")}
+      </Line>
+    );
+  }
+
+  return unlocked;
+};
 
 const MainHelpSequence = () => {
   return (
-    <Sequence>
+    <Sequence flattenChildren>
       <Line>Try entering a command to get more information.</Line>
       <Line>ex. "help unlock"</Line>
+      <Line />
+      <Unlocked />
     </Sequence>
   );
 };
@@ -22,18 +54,20 @@ const UnrecognizedCommandHelpSequence = (command) => () => {
 
 const ListHelpSeq = () => {
   return (
-    <Sequence>
+    <Sequence flattenChildren>
       <Line>The "list" command shows the contents of this directory.</Line>
       <Line />
       <Line>Extra argument(s) are supported as indicated by </Line>
       <Line>the LIST_OPT env var.</Line>
+      <Line />
+      <Unlocked />
     </Sequence>
   );
 };
 
 const PrintHelpSeq = () => {
   return (
-    <Sequence>
+    <Sequence flattenChildren>
       <Line>The "print" command will display the provided files and</Line>
       <Line>environment variables.</Line>
       <Line />
@@ -41,13 +75,15 @@ const PrintHelpSeq = () => {
       <Line />
       <Line>Print provides a system-wide configuration file named:</Line>
       <Line>"print_config.json"</Line>
+      <Line />
+      <Unlocked />
     </Sequence>
   );
 };
 
 const UnlockHelpSeq = () => {
   return (
-    <Sequence>
+    <Sequence flattenChildren>
       <Line>
         The "unlock" command will disable the Shield OS monitoring program
       </Line>
@@ -56,25 +92,29 @@ const UnlockHelpSeq = () => {
       <Line>Provided the correct pass code is provided.</Line>
       <Line />
       <Line>If locked out, try "recover" command.</Line>
+      <Line />
+      <Unlocked />
     </Sequence>
   );
 };
 
 const ParseHelpSeq = () => {
   return (
-    <Sequence>
+    <Sequence flattenChildren>
       <Line>"parse" provides an ecosystem of dependencies capable of</Line>
       <Line>parsing many non-text file formats.</Line>
       <Line />
       <Line>Configure "parse" dependency installer with "INSTALLER"</Line>
       <Line>and "INSTALLER_SERVER" env variables.</Line>
+      <Line />
+      <Unlocked />
     </Sequence>
   );
 };
 
 const RecoverHelpSeq = () => {
   return (
-    <Sequence>
+    <Sequence flattenChildren>
       <Line>"recover" provides password hints if correct</Line>
       <Line>
         answers are provided as per the <strong>.shield_os.json</strong>
@@ -85,23 +125,27 @@ const RecoverHelpSeq = () => {
       <Line>variable RECOVERY_FILE_PATH.</Line>
       <Line />
       <Line>e.x. recover 1 answer</Line>
+      <Line />
+      <Unlocked />
     </Sequence>
   );
 };
 
 const PingHelpSeq = () => {
   return (
-    <Sequence>
+    <Sequence flattenChildren>
       <Line>"ping" is a test command that checks if</Line>
       <Line>you're capable of reaching the provided</Line>
       <Line>URL.</Line>
+      <Line />
+      <Unlocked />
     </Sequence>
   );
 };
 
 const InstallHelpSeq = () => {
   return (
-    <Sequence>
+    <Sequence flattenChildren>
       <Line>"install" integrates with the global Shield OS</Line>
       <Line>dependency library.</Line>
       <Line />
@@ -110,6 +154,8 @@ const InstallHelpSeq = () => {
       <Line>verification.</Line>
       <Line />
       <Line>Provide a dependency name to install it locally.</Line>
+      <Line />
+      <Unlocked />
     </Sequence>
   );
 };
@@ -120,6 +166,8 @@ const help = (commandLineInterface) => (command) => {
     commandLineInterface.prompt();
     return;
   }
+
+  let shouldAddCommand = true;
 
   switch (command) {
     case "list":
@@ -144,8 +192,13 @@ const help = (commandLineInterface) => (command) => {
       commandLineInterface.stdout(InstallHelpSeq);
       break;
     default:
+      shouldAddCommand = false;
       commandLineInterface.stdout(UnrecognizedCommandHelpSequence(command));
       break;
+  }
+
+  if (shouldAddCommand) {
+    helpedCommands.add(command);
   }
 
   commandLineInterface.prompt();

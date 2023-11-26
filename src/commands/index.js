@@ -3,9 +3,9 @@ import * as commands from "./*.js";
 const commandEntries = Object.entries(commands).filter(
   ([key]) => key !== "index"
 );
+const commandCount = commandEntries.length;
 
 const bindCommands = (commandLineInterface) => {
-  console.log("binding commands");
   return commandEntries.reduce((boundCommands, [key, currentCommand]) => {
     return {
       ...boundCommands,
@@ -15,3 +15,4 @@ const bindCommands = (commandLineInterface) => {
 };
 
 export default bindCommands;
+export { commandCount };

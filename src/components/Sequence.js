@@ -4,6 +4,7 @@ import arrayifyChildren from "../utils/react/arraifyChildren";
 import styled from "styled-components";
 import useGlobalClickOnce from "../utils/inputEvents/useGlobalClickOnce";
 import Prompt from "./Prompt";
+import { Unlocked } from "../commands/help";
 
 function preProcessChildren({ children, flattenChildren }) {
   let processedChildren = arrayifyChildren(children);
@@ -15,7 +16,15 @@ function preProcessChildren({ children, flattenChildren }) {
   // Remove all children that
   // are not a Line React component
   processedChildren = processedChildren.filter((child) => {
-    return child?.type === Line || child?.type === Prompt;
+    return (
+      child?.type === Line ||
+      child?.type === Prompt ||
+      // Pulled from help file
+      // Probably Sequence should have a
+      // way to configure "valid children"
+      // that inherit the interface properly
+      child?.type === Unlocked
+    );
   });
 
   return processedChildren;

@@ -47,7 +47,7 @@ const Prompt = ({ onSubmit, onMount }) => {
         }
       },
     },
-    [disabled]
+    [disabled, value, setValue, setDisabled]
   );
 
   useEffect(() => {
@@ -73,6 +73,11 @@ const Prompt = ({ onSubmit, onMount }) => {
       ref={textAreaRef}
       value={value}
       onChange={(e) => {
+        if (e.target.value.length < 2) {
+          setValue("$ ");
+          return;
+        }
+
         setValue(e.target.value);
       }}
     />

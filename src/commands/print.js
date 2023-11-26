@@ -2,6 +2,7 @@ import React from "react";
 import Line from "../components/Line";
 import Sequence from "../components/Sequence";
 import env from "../data/env.yaml";
+import { printedVariables } from "./help";
 
 const PrintFileSeq = (content) => () => {
   return (
@@ -55,6 +56,7 @@ const print =
 
       let outputText = textOrFileName;
       if (env[textOrFileName] !== undefined) {
+        printedVariables.add(textOrFileName);
         outputText = env[textOrFileName];
       }
 

@@ -1,3 +1,5 @@
+xXx        xXx         xXx           xXx
+
 You'll never crack my SHIELD OS 
   E N C R Y P T I O N.
 
@@ -8,6 +10,8 @@ rabbit hole!!!
 You stay in Wonderland.
 
 I know Kung-Fu. Goodbye, Mr. ANDERSON.
+
+xXx        xXx         xXx           xXx
 
 Accurate Quotations supplied by Warner
 Bros. movieIQ quote engine for "The
