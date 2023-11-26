@@ -71,19 +71,23 @@ const App = () => {
         </Line>
         <Line color="asciiArtColor">SHIELD_OS v3.37.2</Line>
         <Line />
-        <Line color="asciiArtColor">{"---- [CUSTOM User Greeting] ----"}</Line>
+        <Line color="asciiArtColor">
+          {"----- [CUSTOM User Greeting] -----"}
+        </Line>
         <Line>This SERVER is super 1337 and SECURE.</Line>
         <Line />
         <Line>I DARE you to try and break in!</Line>
         <Line />
         <Line>SHIELD_OS isn't one of those BOOMER terminals.</Line>
         <Line>There's no lame penguin mascot, we've got a</Line>
-        <Line>a super sick SHIELD logo.</Line>
+        <Line>a super sick SHIELD.</Line>
         <Line />
         <Line>NOTHING you know about "real" terminals</Line>
         <Line>will help you here. You'll need to experiment.</Line>
         <Line>Don't worry about breaking anything.</Line>
-        <Line color="asciiArtColor">{"--------------------------------"}</Line>
+        <Line color="asciiArtColor">
+          {"----------------------------------"}
+        </Line>
         <Line />
         <Line>
           Welcome to <strong>Shield OS</strong>
