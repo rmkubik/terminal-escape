@@ -76,17 +76,13 @@ const App = () => {
         <Line />
         <Line>I DARE you to try and break in!</Line>
         <Line />
-        <Line>SHIELD_OS isn't one of those BOOMER terminals</Line>
-        <Line>There's no dumb penguin mascot, it has a</Line>
-        <Line>a super sick SHIELD logo. And nothing you</Line>
-        <Line>know from over there will help you here.</Line>
+        <Line>SHIELD_OS isn't one of those BOOMER terminals.</Line>
+        <Line>There's no lame penguin mascot, we've got a</Line>
+        <Line>a super sick SHIELD logo.</Line>
         <Line />
-        <Line>If you don't know how SHIELD_OS works</Line>
-        <Line>you'll NEVER make it. But if you</Line>
-        <Line>wanna try anyway, I made a special</Line>
-        <Line>command just for you.</Line>
-        <Line />
-        <Line>Try typing in: "help newb"</Line>
+        <Line>NOTHING you know about "real" terminals</Line>
+        <Line>will help you here. You'll need to experiment.</Line>
+        <Line>Don't worry about breaking anything.</Line>
         <Line color="asciiArtColor">{"--------------------------------"}</Line>
         <Line />
         <Line>
