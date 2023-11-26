@@ -59,7 +59,8 @@ const ListHelpSeq = () => {
       <Line>contents of a directory.</Line>
       <Line />
       <Line>Extra argument(s) are supported as indicated by</Line>
-      <Line>the LIST_OPT env var.</Line>
+      <Line>the LIST_OPT env var. Use arguments in the pattern</Line>
+      <Line>"list xxx".</Line>
       <Line />
       <Unlocked />
     </Sequence>
