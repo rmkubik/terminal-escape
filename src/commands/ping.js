@@ -3,30 +3,36 @@ import Line from "../components/Line";
 import Sequence from "../components/Sequence";
 import isValidHttpUrl from "../utils/urls/isValidHttpUrl";
 
-const PingServerSeq = (url) => () => {
+const PingServerSeq = (url, focus) => () => {
   return (
     <Sequence>
-      <Line>Pinging "{url}"...</Line>
-      <Line />
-      <Line typed>[^200.^500.^100.^300.^100.^300.^200.^400]</Line>
-      <Line />
-      <Line>Connection successfully established!</Line>
-      <Line />
-      <Line>Ping Origin Location</Line>
-      <Line delay={500}>Server: Portland, OR, U.S.A. - CenturyLink</Line>
-      <Line>IP: 18.884.123.85 {"<CenturyLink>"}</Line>
+      <Line onFinished={focus}>Pinging "{url}"...</Line>
+      <Line onFinished={focus} />
+      <Line onFinished={focus} typed>
+        [^200.^500.^100.^300.^100.^300.^200.^400]
+      </Line>
+      <Line onFinished={focus} />
+      <Line onFinished={focus}>Connection successfully established!</Line>
+      <Line onFinished={focus} />
+      <Line onFinished={focus}>Ping Origin Location</Line>
+      <Line onFinished={focus} delay={500}>
+        Server: Portland, OR, U.S.A. - CenturyLink
+      </Line>
+      <Line onFinished={focus}>IP: 18.884.123.85 {"<CenturyLink>"}</Line>
     </Sequence>
   );
 };
 
-const CannotReachUrlSeq = (url) => () => {
+const CannotReachUrlSeq = (url, focus) => () => {
   return (
     <Sequence>
-      <Line>Pinging "{url}"...</Line>
-      <Line />
-      <Line typed>[^200.^300.^300.^200.^400]</Line>
-      <Line />
-      <Line>Cannot reach server: "{url}"</Line>
+      <Line onFinished={focus}>Pinging "{url}"...</Line>
+      <Line onFinished={focus} />
+      <Line onFinished={focus} typed>
+        [^200.^300.^300.^200.^400]
+      </Line>
+      <Line onFinished={focus} />
+      <Line onFinished={focus}>Cannot reach server: "{url}"</Line>
     </Sequence>
   );
 };
@@ -51,7 +57,9 @@ const ping = (commandLineInterface) => (url) => {
   // This is easily bypass-able but should give
   // some small semblance of verisimilitude.
   if (!new URL(url).host.includes(".")) {
-    commandLineInterface.stdout(CannotReachUrlSeq(url));
+    commandLineInterface.stdout(
+      CannotReachUrlSeq(url, commandLineInterface.focus)
+    );
     // Timeout roughly matches
     // the length of dots in the
     // failed ping sequence.
@@ -59,7 +67,7 @@ const ping = (commandLineInterface) => (url) => {
     return;
   }
 
-  commandLineInterface.stdout(PingServerSeq(url));
+  commandLineInterface.stdout(PingServerSeq(url, commandLineInterface.focus));
   // Timeout roughly matches
   // the length of dots and delays
   // in the ping sequence.

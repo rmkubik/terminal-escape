@@ -2,20 +2,20 @@ import React from "react";
 import Line from "../components/Line";
 import Sequence from "../components/Sequence";
 
-const InstallDepSeq = (dependency) => () => {
+const InstallDepSeq = (dependency, focus) => () => {
   return (
     <Sequence>
-      <Line>Found package: {dependency}</Line>
-      <Line>Starting installation</Line>
-      <Line />
-      <Line typed>
+      <Line onFinished={focus}>Found package: {dependency}</Line>
+      <Line onFinished={focus}>Starting installation</Line>
+      <Line onFinished={focus} />
+      <Line onFinished={focus} typed>
         [^200.^500.^100.^300.^200.^400.^200.^500.^100.^300.^200.^400]
       </Line>
-      <Line />
-      <Line>added: 1 new package</Line>
-      <Line />
-      <Line>"{dependency}" installed to local</Line>
-      <Line>found 0 vulnerabilities</Line>
+      <Line onFinished={focus} />
+      <Line onFinished={focus}>added: 1 new package</Line>
+      <Line onFinished={focus} />
+      <Line onFinished={focus}> "{dependency}" installed to local</Line>
+      <Line onFinished={focus}>found 0 vulnerabilities</Line>
     </Sequence>
   );
 };
@@ -44,7 +44,9 @@ const install = (commandLineInterface) => (dependency) => {
   }
 
   commandLineInterface.dependencies.install(dependency);
-  commandLineInterface.stdout(InstallDepSeq(dependency));
+  commandLineInterface.stdout(
+    InstallDepSeq(dependency, commandLineInterface.focus)
+  );
 
   // This timeout roughly matches the length of the
   // dots in the install sequence.

@@ -40,6 +40,9 @@ const App = () => {
           />,
         ]);
       },
+      focus: () => {
+        consoleRef.current.scrollTop = consoleRef.current.scrollHeight;
+      },
       dependencies: DependencyModel,
       files: FilesModel,
     });

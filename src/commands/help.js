@@ -4,7 +4,7 @@ import Sequence from "../components/Sequence";
 import { commandCount } from "./index";
 import env from "../data/env.yaml";
 
-const helpedCommands = new Set(["help"]);
+const helpedCommands = new Set(["help", "hello"]);
 export const printedVariables = new Set();
 
 export const Unlocked = () => {
@@ -23,7 +23,7 @@ export const Unlocked = () => {
     const varCount = Object.values(env).length;
     unlocked.push(
       <Line>
-        printed ({printedVariables.size}/{varCount}):{" "}
+        found vars ({printedVariables.size}/{varCount}):{" "}
         {Array.from(printedVariables).join(", ")}
       </Line>
     );
@@ -55,9 +55,10 @@ const UnrecognizedCommandHelpSequence = (command) => () => {
 const ListHelpSeq = () => {
   return (
     <Sequence flattenChildren>
-      <Line>The "list" command shows the contents of this directory.</Line>
+      <Line>With no arguments, the "list" command shows the</Line>
+      <Line>contents of a directory.</Line>
       <Line />
-      <Line>Extra argument(s) are supported as indicated by </Line>
+      <Line>Extra argument(s) are supported as indicated by</Line>
       <Line>the LIST_OPT env var.</Line>
       <Line />
       <Unlocked />
