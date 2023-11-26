@@ -21,8 +21,8 @@ const PrintInvalidExtnameSeq = (file) => () => {
       <Line>ERR:</Line>
       <Line>ERR: Invalid extension type.</Line>
       <Line />
-      <Line>Check PARSE_ENGINE variable for</Line>
-      <Line>configured parser.</Line>
+      <Line>Check SUGGESTED_ALT_PRINT variable for</Line>
+      <Line>suggested alternative.</Line>
     </Sequence>
   );
 };
