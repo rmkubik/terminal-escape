@@ -18,7 +18,8 @@ const InvalidListOptSeq = () => {
       <Line>Invalid "list" argument. Check LIST_OPT env var</Line>
       <Line>to see configured arguments. Default suggested</Line>
       <Line>command for viewing is "print" on SHIELD_OS</Line>
-      <Line>versions more recent than 2.3.0.</Line>
+      <Line>versions more recent than 2.3.0. Check OS_VERSION</Line>
+      <Line>var for current version.</Line>
     </Sequence>
   );
 };
