@@ -9,6 +9,7 @@
     "parcel": "^2.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "rimraf": "^5.0.5",
     "styled-components": "^6.1.0",
     "typed.js": "^2.0.16"
   },
@@ -21,7 +22,8 @@
   },
   "scripts": {
     "start": "parcel src/index.html",
-    "build": "parcel build src/index.html --public-url='.'",
+    "build": "npm run build:clean && parcel build src/index.html --public-url='.'",
+    "build:clean": "rimraf dist",
     "deploy": "npm run build && npm run deploy:itch",
     "deploy:itch": "butler push dist rmkubik/terminal-escape:html"
   },
