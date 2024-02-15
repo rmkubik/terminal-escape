@@ -1,7 +1,7 @@
 {
-  "name": "parcel-react-starter",
+  "name": "terminal-escape",
   "browserslist": "> 0.5%, last 2 versions, not dead",
-  "version": "1.7.1",
+  "version": "1.0.0",
   "description": "",
   "dependencies": {
     "autosize": "^6.0.1",
@@ -27,6 +27,6 @@
     "deploy": "npm run build && npm run deploy:itch",
     "deploy:itch": "butler push dist rmkubik/terminal-escape:html"
   },
-  "author": "",
+  "author": "rmkubik",
   "license": "CC-BY-NC-4.0"
 }
