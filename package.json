@@ -28,5 +28,5 @@
     "deploy:itch": "butler push dist rmkubik/terminal-escape:html"
   },
   "author": "",
-  "license": "ISC"
+  "license": "CC-BY-NC-4.0"
 }
